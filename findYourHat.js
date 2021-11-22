@@ -17,7 +17,7 @@ class Field {
         let numHoles = numCharacters * (percentHoles / 100);
         let numFieldCharacters = numCharacters - numHoles - 2;
         let fieldArray = ['*', '^'];
-        let randomFieldArray = [];
+        let fieldArrays = [];
         //create array with all characters to use
         //push holes into character array
         for(let i=0; i<numHoles; i++) {
@@ -32,12 +32,13 @@ class Field {
             const j = Math.floor(Math.random() * (i + 1));
             [fieldArray[i], fieldArray[j]] = [fieldArray[j], fieldArray[i]];
         }
+        console.log(fieldArray);
         //ovanför fungerar, nedanför är experiemnt
         //spit into multiple arrays
-        const chunk = (arr, size) =>
-        Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
-        arr.slice(i * size, i * size + size)
-        );
+        for(let i=0; i<fieldArray.length; i+=height) {
+            fieldArrays.push(fieldArray.slice(i, i+width));
+        }
+        console.log(fieldArrays.join(''));
     }
 }
 
