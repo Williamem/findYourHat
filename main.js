@@ -54,7 +54,26 @@ class Field {
         let x = 0;
         let y = 0;
         //handle user inputs
-        if(userInput === 'r') {
+        switch(userInput) {
+            case 'r': x+=1;
+            break;
+            case 'l': x-=1;
+            break;
+            case 'd': y+=1;
+            break;
+            case 'u': y-=1;
+            default: console.log('Use "u" for up, "r" for right and so on');
+        }
+        //check if move is possible
+        if(x<0 || y<0 || x>this.height || y>this.height) {
+            console.log('You fell off the playing field, sorry.')
+        } else if(this.field[y][x] === hole) {
+            console.log('Oops, you fell into a hole');
+        } else {
+            
+        }
+        //check if move is possible
+        /*if(userInput === 'r') {
             x +=1;
         } else if(userInput === 'l') {
             x -= 1;
@@ -64,7 +83,7 @@ class Field {
             y -= 1;
         } else {
             console.log('Use "u" for up, "r" for right and so on');
-        }
+        }*/
     }
 }
 //create a field
